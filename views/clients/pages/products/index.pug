@@ -17,9 +17,10 @@ block main
               src =item.thumbnail
               alt=item.title)
             .inner.content
-              h3.inner-title #{item.title}
-              .inner-price-new #{item.price}$
-              .inner-price-old 100$
-              .inner-discount #{item.discountPercentage}$
+              h3.inner-title 
+                a(href =`/products/${item.id}`) #{item.title}
+              .inner-price-new #{item.priceNew}$
+              .inner-price-old #{item.price}$ giá cũ 
+              .inner-discount #{item.discountPercentage}%
              
       
