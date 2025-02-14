@@ -1,0 +1,25 @@
+extends ../../layouts/default.pug
+include ../../mixin/box-head.pug
+
+
+block main 
+  .container.my-3 
+    .row 
+      .col-12
+       +box-head("Danh sach san pham")
+
+    .row
+      each item in products
+        .col-4.mb-3
+          .product-item 
+            .inner-image 
+              img(
+              src =item.thumbnail
+              alt=item.title)
+            .inner.content
+              h3.inner-title #{item.title}
+              .inner-price-new #{item.price}$
+              .inner-price-old 100$
+              .inner-discount #{item.discountPercentage}$
+             
+      
