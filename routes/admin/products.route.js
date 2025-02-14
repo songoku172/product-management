@@ -20,7 +20,7 @@ route.get('/create',controller.create);
 
 route.post(
     '/create',
-    upload.single("thumbnail"),
+    upload.single("thumbnail"), // cần multer
     validate.createPost,  // không cần truyền (req,res)
     controller.createPost);
 // thumbnail là trường lưu ảnh
@@ -34,5 +34,6 @@ route.patch(
     controller.editPatch
 );
 
+route.get('/detail/:id',controller.detail);
 
 module.exports = route  ;

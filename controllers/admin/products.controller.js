@@ -175,4 +175,26 @@ module.exports.editPatch = async (req, res) => {
     res.redirect("back");
     }    
 
+
+//[GET]/admin/products/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+     const find = {
+         deleted : false, // check xem sản phẩm đã bị xóa hay chưa
+         _id : req.params.id // lấy ra sản phẩm mà có id như vầy
+     };
+     const product = await Products.findOne(find);
+
+     res.render("admin/pages/products/detail",{
+         pageTitle: product.title,
+         product : product
+         
+     });
+     } catch (error) {
+         req.flash("error", " không tồn tại sản phẩm này");
+         res.redirect(`${systemConfig.prefixAdmin}/products`);
+        } 
+     
+    }     
+
 //https://dwatch.com.vn/wp-comtent/uploads/2022/06/Dong-ho-Guess-nam-chinh-hang-1.jpg
