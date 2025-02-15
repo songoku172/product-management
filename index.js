@@ -27,8 +27,8 @@ app.use(methodOverride('_method'))
 
 const port = process.env.PORT;
 
-app.use(express.static("public")); // để dùng được file tĩnh 
-app.set('views', './views');
+app.use(express.static(`${__dirname}/public`)); // để dùng được file tĩnh 
+app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
 
 // hiển thị thông báo
