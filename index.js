@@ -4,7 +4,6 @@ var methodOverride = require('method-override');//23
 
 var bodyParser = require('body-parser');
 
-
 const dataBase = require("./config/database");
 
 const systemConfig = require("./config/system");
