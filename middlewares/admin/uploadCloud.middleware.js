@@ -3,11 +3,14 @@ const streamifier = require("streamifier");
 
 // connect đến tkhoan cloudinary
 cloudinary.config({ 
-    cloud_name: process.env.CLOUD_NAME, 
-    api_key: process.env.CLOUD_KEY, 
-    api_secret:process.env.CLOUD_SECRET 
+    cloud_name:"das69ezkd", 
+    api_key: "961262811397956", 
+    api_secret: "FqWjbBqG5hc8zPsOT95ZSd6Ywnk"
   });
   // end clodinary
+  
+  
+  console.log("API Key:", process.env.CLOUD_NAME);
 
 
 module.exports.upload =  (req,res,next) => {

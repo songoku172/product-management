@@ -6,5 +6,4 @@ module.exports.createPost = (req, res,next) => {
         return;
     };
     next();
-
 }

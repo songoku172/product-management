@@ -1,32 +1,29 @@
 extends ../../layouts/default.pug
 include ../../mixins/filter-status.pug
-include ../../mixins/pagination.pug
 include ../../mixins/search.pug
 include ../../mixins/form-change-multi.pug
 
 block main 
-    h1 trang danh sách sản phẩm 
+    h1 Danh mục sản phẩm 
 
 
     .card.mb-3 
         .card-header Bộ lọc và tìm kiếm 
             .card-body 
-                .row
+                .row 
                     .col-6
                         +filter-status(filterStatus)
                     .col-6
                         +search(keyWord)
-                                
+                         
     .card.mb-3 
-        .card-header Danh sách sản phẩm
+        .card-header Danh mục sản phẩm
         .card-body 
             .card-body 
                 .row 
-                    .col-8
-                         +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)  
                     .col-4 
                         a(
-                            href=`${prefixAdmin}/products/create`
+                            href=`${prefixAdmin}/products-category/create`
                             class="btn btn-outline-success"
                         )     + Thêm mới
 
@@ -41,12 +38,10 @@ block main
                         th STT 
                         th Hình ảnh 
                         th Tiêu đề
-                        th GIá
                         th Trạng thái 
                         th Hành động
-
                 tbody 
-                    each item, index in products 
+                    each item, index in record 
                         tr 
                             td 
                                 input(
@@ -63,7 +58,7 @@ block main
                                     height="auto"
                                     )
                             td #{item.title}
-                            td #{item.price} $
+                        
                             td
                                 if(item.status == "active")
                                     a(
@@ -91,22 +86,4 @@ block main
                                     class="btn btn-danger btn-sm ml-1"
                                     button-delete
                                     data-id = item.id
-                                    ) Xóa 
-
-    +pagination(pagination)   
-
-    form(
-        action="",
-        method="POST"
-        id="form-change-status"
-        data-path = `${prefixAdmin}/products/change-status`
-        )
-        
-    form(
-        action="",
-        method="POST"
-        id="form-delete-item"
-        data-path = `${prefixAdmin}/products/delete`
-        ) 
-            
-     script(src="/admin/js/product.js") 
+                                    ) Xóa         

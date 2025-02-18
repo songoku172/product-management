@@ -6,7 +6,7 @@ const uploadCloud = require("../../middlewares/admin/uploadCloud.middleware");
 
 const route = express.Router(); 
 //validate
-const validate = require("../../validates/product.validate");
+const validate = require("../../validates/admin/product-category.validate");
 
 const controller = require("../../controllers/admin/products.controller");
 
@@ -37,5 +37,7 @@ route.patch(
 );
 
 route.get('/detail/:id',controller.detail);
+
+
 
 module.exports = route  ;
