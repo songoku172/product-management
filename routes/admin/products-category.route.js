@@ -19,7 +19,17 @@ route.post(
     upload.single("thumbnail"),// cần multer // thumbnail là trường lưu ảnh
     uploadCloud.upload,
     validate.createPost,  // không cần truyền (req,res)
-    controller.createPost);
+    controller.createPost
+);
 
+route.get('/edit/:id',controller.edit);
+
+
+route.patch(
+    '/edit/:id',
+    upload.single("thumbnail"),
+    validate.createPost,  // không cần truyền (req,res)
+    controller.editPatch
+);
 
 module.exports = route  ;

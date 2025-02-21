@@ -46,10 +46,42 @@ module.exports.create = async (req, res) => {
     });
 }
 
-//[POST] /admin/products/create
+//[POST] /admin/products-category/create
 module.exports.createPost = async (req, res) => {
     const record = new ProductsCategory(req.body);
     await record.save();
 
     res.redirect(`${systemConfig.prefixAdmin}/products-category`);
+};
+
+//[GET] /admin/products-category/edit/:id
+module.exports.edit = async (req, res) => {
+   try {
+        const data = await ProductsCategory.findOne({
+            _id : req.params.id,
+            deleted : false
+        });
+
+        const record = await ProductsCategory.find({
+            deleted : false
+        });
+
+        const newRecord = createTreeHelpers.tree(record);
+
+
+        res.render("admin/pages/products-category/edit" ,{
+            pageTitle : " Chinh sửa danh mục sản phẩm",
+            data : data, 
+            record : newRecord
+    });
+   } catch (error) {
+    res.redirect(`${systemConfig.prefixAdmin}/products-category`);
+    }
+};
+
+//[PATCH] /admin/products-category/edit/:id
+module.exports.editPatch = async (req, res) => {
+        const id =  req.params.id;
+        await ProductsCategory.updateOne({_id: id}, req.body);
+        res.redirect("back");
 };
