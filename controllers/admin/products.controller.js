@@ -1,4 +1,6 @@
 // [GET] /admin/products
+const ProductsCategory = require("../../model/product-category.model");
+const createTreeHelpers   = require("../../helpers/createTree")
 const Products = require("../../model/product.model");
 const filterStatusHelpers = require("../../helpers/filterstatus");
 const searchHelpers       = require("../../helpers/search");
@@ -108,8 +110,16 @@ module.exports.deleteItem = async (req,res ) =>{
 
 //[GET]/admin/products/creat
 module.exports.create = async (req, res) => {
+
+    const record = await ProductsCategory.find({
+        deleted : false
+    });
+
+    const newRecord = createTreeHelpers.tree(record);
+
     res.render("admin/pages/products/create",{
         pageTitle: " Thêm mới sản phẩm ",
+        category : newRecord
     });
 }
 //[POST] /admin/products/creat
@@ -139,9 +149,16 @@ module.exports.edit = async (req, res) => {
     };
     const product = await Products.findOne(find);
     //console.log(product); nhưng nó trả ra 1 mảng =>findone
+
+    const record = await ProductsCategory.find({
+        deleted : false
+    });
+
+    const newRecord = createTreeHelpers.tree(record);
     res.render("admin/pages/products/edit",{
         pageTitle: " Chỉnh sửa sản phẩm ",
-        product : product
+        product : product,
+        category : newRecord
         
     });
     } catch (error) {
