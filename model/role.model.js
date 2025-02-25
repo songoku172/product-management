@@ -7,6 +7,10 @@ permissions: {
     type : Array,
     default: []
 },
+deleted :{
+    type: Boolean,
+    default: false
+},
 deleteAt : Date
 },{
     timestamps: true
