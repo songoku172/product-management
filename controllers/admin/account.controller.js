@@ -83,7 +83,6 @@ module.exports.edit = async (req, res) => {
 // [PATCH] /admin/account/edit/:id
 module.exports.editPatch = async (req, res) => { 
     const id =  req.params.id;
-    console.log(id)
     if(req.body.pasword){
         req.body.password = md5(req.body.password);
     } else {
