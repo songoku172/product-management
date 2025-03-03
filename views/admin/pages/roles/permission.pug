@@ -80,6 +80,7 @@ block main
                 each item in record 
                     td(class="text-center")
                         input(type="checkbox")  
+            //- nhóm   quyền            
 
             tr 
                 td(colspan="4")
@@ -108,7 +109,32 @@ block main
                 td Phân quyền
                 each item in record 
                     td(class="text-center")
-                        input(type="checkbox")                
+                        input(type="checkbox") 
+
+            //- tài khoản
+            tr 
+                td(colspan="4")
+                    b Tài khoản 
+            tr(data-name="account_view")
+                td Xem 
+                each item in record 
+                    td(class="text-center")
+                        input(type="checkbox")
+            tr(data-name="account_create")
+                td Thêm mới
+                each item in record 
+                    td(class="text-center")
+                        input(type="checkbox")
+            tr(data-name="account_edit")
+                td Chỉnh sửa
+                each item in record 
+                    td(class="text-center")
+                        input(type="checkbox")
+            tr(data-name="account_delete")
+                td Xóa
+                each item in record 
+                    td(class="text-center")
+                        input(type="checkbox")                           
                                               
 
     form(

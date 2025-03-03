@@ -7,18 +7,20 @@ html
 
     link(rel="stylesheet", href="/admin/css/style.css")
  body
+      if(role.permissions.length > 0 )
+         include ../partial/header.pug
 
-    include ../partial/header.pug
+         .body 
+            include ../partial/sider.pug
 
-    .body 
-        include ../partial/sider.pug
+            .main 
+                  block main 
 
-        .main 
-            block main 
+         script(src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js") 
+            
 
-    script(src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js") 
-        
+         script(src="https://cdn.jsdelivr.net/npm/bootrap@4.6.2/dist/js/boostrap.bundle.min.js")
 
-    script(src="https://cdn.jsdelivr.net/npm/bootrap@4.6.2/dist/js/boostrap.bundle.min.js")
-
-    script(src="/admin/js/script.js")  
+         script(src="/admin/js/script.js")  
+      else 
+         h1 Bạn không có quyền truy cập 
