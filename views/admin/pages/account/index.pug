@@ -10,10 +10,11 @@ block main
                 .row 
                     .col-8 
                     .col-4.text-right 
-                        a(
-                            href=`${prefixAdmin}/accounts/create`
-                            class="btn btn-outline-success"
-                        ) + Thêm mới 
+                        if(role.permissions.includes("account_edit")) 
+                            a(
+                                href=`${prefixAdmin}/accounts/create`
+                                class="btn btn-outline-success"
+                            ) + Thêm mới 
                 table(
                     class="table table-hover table-sm"
                 )        
@@ -54,11 +55,11 @@ block main
                                                     class="badge badge-danger"
                                                     data-status="inactive"
                                                 ) Dừng hoạt động 
-                                    td 
+                                td 
                                     a(
-                                        class="btn btn-secondary btn-sm"
-                                        href=`${prefixAdmin}/accounts/detail/${item.id}`
-                                    )   Chi tiết 
+                                            class="btn btn-secondary btn-sm"
+                                            href=`${prefixAdmin}/accounts/detail/${item.id}`
+                                        )   Chi tiết 
                                     if(role.permissions.includes("account_edit"))
                                         a(
                                             class="btn btn-warning btn-sm ml-1"
