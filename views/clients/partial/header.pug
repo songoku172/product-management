@@ -13,6 +13,10 @@ header.header
                             a(href="/") Trang chu 
                         li 
                             a(href="/products")  San pham
-                        li 
-                            a(href = "/user/register") Đăng ký
-                            a(href = "/user/login")    Đăng nhập          
+                        if(user)
+                            li
+                                a(href = "/user/logout") Đăng xuất
+                        else    
+                            li 
+                                a(href = "/user/register") Đăng ký
+                                a(href = "/user/login")    Đăng nhập          

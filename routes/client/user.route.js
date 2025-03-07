@@ -11,4 +11,6 @@ route.get('/login',controller.login);
 
 route.post('/login',controller.loginPost);
 
+route.get('/logout',controller.logout);
+
 module.exports = route  ;
